@@ -21,7 +21,7 @@ I soft linked whatever tapelabel folder to next by running a command like this:
 I could not get dvgrab to output to stdout so I captured the log information with script. Before
 starting dvgrab I would run `script ./next/log.txt`
 
-### Waring on Failure
+### Warning on Failure
 I had quite a few errors on the tapes I was working on and dvgrab crashed multiple times.
 I adjusted my dvgrab command to run zenity with either an error message on failure or a success notice.
 I made the error windows show up on top by adding a rule to kwin.
@@ -32,14 +32,14 @@ I made the error windows show up on top by adding a rule to kwin.
 My tapes had quite a few still images. These were ~32mb files with audio in the background. I made
 a new folder called Pictures under any tape directory I found stills in. I manually moved the stills
 into the Pictures folder, and then ran stills.sh. This will move ahead by 3 seconds. Moving forward
-avoided courruption at the start of some of my stills. Then it pipes the frame to Magick to convert to
+avoided corruption at the start of some of my stills. Then it pipes the frame to Magick to convert to
 HEIC.
 
 ### Deinterlacing and createvpy.py
 I decided to deinterlace with QTGMC. I used vapoursynth as my frameserver. Look at base.vpy for my
 configuration file. Installing all of the packages took some effort even with my AUR helper on Archlinux.
 [Arch Fourm Thread](https://bbs.archlinux.org/viewtopic.php?id=297627)
-Vapoursynth expectes a .vpy file which contains the name of the source to use. That means creating a vpy file
+Vapoursynth expects a .vpy file which contains the name of the source to use. That means creating a vpy file
 for each and every .dv.
 
 ### extractwav.sh
