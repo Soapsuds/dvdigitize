@@ -51,10 +51,22 @@ HEIC.
 
 ### Deinterlacing and createvpy.py
 I decided to deinterlace with QTGMC. I used vapoursynth as my frameserver. Look at base.vpy for my
-configuration file. Installing all of the packages took some effort even with my AUR helper on Archlinux.
-[Arch Fourm Thread](https://bbs.archlinux.org/viewtopic.php?id=297627)
-Vapoursynth expects a .vpy file which contains the name of the source to use. That means creating a vpy file
-for each and every .dv.
+configuration file. Vapoursynth expects a .vpy file which contains the name of the source to use. That means
+creating a vpy file for each and every .dv.
+
+#### Installing with pip
+```
+python -m venv ./qtgmc-venv
+./qtgmc-venv/bin/pip install -r requirements.txt
+```
+
+Additionally add VSSCRIPT_PATH to the venv's activate script:
+```
+echo "export VSSCRIPT_PATH=\"$(./qtgmc-venv/bin/vapoursynth get-vsscript)\"" >> ./qtgmc-venv/bin/activate
+sed -i 's/^deactivate () {/deactivate () {\n    unset VSSCRIPT_PATH/' ./qtgmc-venv/bin/activate
+```
+
+Then, make sure to run `source ./qtgmc-venv/bin/activate` before `encode.sh` / `runencode.sh` so they use the venv's `vspipe`.
 
 ### extractwav.sh
 I did not get Vapoursynth to work with the audio in my DV files. By extracting the wav files I can add them
